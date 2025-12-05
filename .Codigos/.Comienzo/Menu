@@ -1,0 +1,113 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
+
+#define OPC1 1
+#define OPC2 2
+#define OPC3 3
+
+int menu();
+void opcion1();
+void opcion2();
+void opcion3();
+
+int main() {
+
+    int eleccion = menu();
+
+    if (eleccion == OPC1) opcion1();
+    if (eleccion == OPC2) opcion2();
+    if (eleccion == OPC3) opcion3();
+
+    return 0;
+}
+
+//-------------------- MENU -------------------------//
+int menu() {
+    int rta;
+
+    do {
+        printf("\n========= MENU PRINCIPAL =========\n");
+        printf("1 - Mostrar divisores de un numero\n");
+        printf("2 - Jugar piedra, papel o tijera\n");
+        printf("3 - Salir\n");
+        printf("==================================\n");
+        scanf("%d", &rta);
+    }
+    while (rta != OPC1 && rta != OPC2 && rta != OPC3);
+
+    return rta;
+}
+
+//------------------- OPCIÓN 1 -----------------------//
+// Muestra todos los divisores de un número (usa for)
+void opcion1() {
+
+    int num;
+    printf("\n1 -- Dame un numero positivo para mostrar sus divisores: ");
+    
+    do {
+        scanf("%d", &num);
+    }
+    while (num <= 0);
+
+    printf("\nLos divisores de %d son:\n", num);
+
+    for (int i = 1; i <= num; i++) {
+        if (num % i == 0) {
+            printf("%d ", i);
+        }
+    }
+
+    printf("\nFin del programa.\n");
+}
+
+
+//------------------- OPCIÓN 2 -----------------------//
+// Piedra, papel o tijera contra la CPU (usa while)
+void opcion2() {
+
+    int jugador;
+    int cpu;
+    srand(time(NULL));
+
+    printf("\n2 -- Vamos a jugar piedra, papel o tijera!\n");
+
+    do {
+        printf("\nElegí una opción:\n");
+        printf("1 - Piedra\n");
+        printf("2 - Papel\n");
+        printf("3 - Tijera\n");
+        scanf("%d", &jugador);
+    }
+    while (jugador < 1 || jugador > 3);
+
+    cpu = rand() % 3 + 1;
+
+    printf("\nElegiste: %d\n", jugador);
+   //-------Opcion del jugador 2-------//
+    if (cpu==1) printf("Jugador 2 eligio piedra\n");
+    if (cpu==2) printf("Jugador 2 eligio papel\n");
+    if (cpu==3) printf("Jugador 2 eligio tijera\n");
+
+    if (jugador == cpu) {
+        printf("\nEmpate!\n");
+    }
+    else if ((jugador == 1 && cpu == 3) ||
+             (jugador == 2 && cpu == 1) ||
+             (jugador == 3 && cpu == 2)) {
+        printf("\nGanaste!\n");
+    }
+    else {
+        printf("\nPerdiste!\n");
+    }
+
+    printf("\nFin del programa.\n");
+}
+
+
+//------------------- OPCIÓN 3 -----------------------//
+void opcion3() {
+    printf("\nChau! Gracias por usar el programa.\n");
+}
