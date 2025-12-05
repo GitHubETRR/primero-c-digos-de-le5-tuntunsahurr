@@ -94,9 +94,7 @@ void opcion2() {
     if (jugador == cpu) {
         printf("\nEmpate!\n");
     }
-    else if ((jugador == 1 && cpu == 3) ||
-             (jugador == 2 && cpu == 1) ||
-             (jugador == 3 && cpu == 2)) {
+    else if ((jugador == 1 && cpu == 3) || (jugador == 2 && cpu == 1) ||  (jugador == 3 && cpu == 2)) {
         printf("\nGanaste!\n");
     }
     else {
