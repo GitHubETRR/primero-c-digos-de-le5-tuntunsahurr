@@ -1,0 +1,58 @@
+Algoritmo act_5
+	Definir Vm, Va, Im, Ia, f Como Real
+    Definir Mz, Az, Zr, Zi Como Real
+    Definir L, C Como Real
+	
+    // Entrada de datos
+    Escribir "Ingresá el módulo de la tensión (Vm):"
+    Leer Vm
+    Escribir "Ingresá el ángulo de la tensión (Va) en grados:"
+    Leer Va
+	
+    Escribir "Ingresá el módulo de la corriente (Im):"
+    Leer Im
+    Escribir "Ingresá el ángulo de la corriente (Ia) en grados:"
+    Leer Ia
+	
+    Escribir "Ingresá la frecuencia en Hz:"
+    Leer f
+	
+    // Impedancia en forma polar
+    Mz <- Vm / Im
+    Az <- Va - Ia
+	
+    // Normalizar ángulo
+    Mientras Az < 0
+        Az <- Az + 360
+    FinMientras
+    Mientras Az >= 360
+        Az <- Az - 360
+    FinMientras
+	
+    // Forma rectangular
+    Zr <- Mz * cos(Az * PI / 180)
+    Zi <- Mz * sen(Az * PI / 180)
+	
+    // Mostrar resultados
+    Escribir ""
+    Escribir "Impedancia (Z) en forma rectangular:"
+    Escribir "Parte real (resistencia): ", Zr
+    Escribir "Parte imaginaria (reactancia): ", Zi
+	
+    // Clasificación y cálculo de L o C
+    Si Zi > 0 Entonces
+        L <- Zi / (2 * PI * f)
+        Escribir "Componente: Inductivo (L)"
+        Escribir "Valor del inductor: ", L, " H"
+    Sino
+        Si Zi < 0 Entonces
+            C <- 1 / (2 * PI * f * abs(Zi))
+            Escribir "Componente: Capacitivo (C)"
+            Escribir "Valor del capacitor: ", C, " F"
+        Sino
+            Escribir "Componente: Resistencia pura (R)"
+        FinSi
+    FinSi
+
+
+FinAlgoritmo

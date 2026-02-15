@@ -1,0 +1,40 @@
+Algoritmo act_1
+	Escribir "Ingresa la parte real"
+	Leer real
+	Escribir "Ingresa la parte imaginaria"
+	Leer imag
+	modulo = raiz(real^2+imag^2)
+	Si real>0 Entonces
+		angulo <- ATan(imag/real)*180/PI
+		Si angulo<0 Entonces
+			angulo <- angulo+360
+		FinSi
+	SiNo
+		Si real<0 Entonces
+			angulo <- ATan(imag/real)*180/PI+180
+		SiNo
+			Si real=0 Entonces
+				Si imag>0 Entonces
+					angulo <- 90
+				SiNo
+					angulo <- 270
+				FinSi
+			FinSi
+		FinSi
+	FinSi
+	Escribir "Modulo ", modulo 
+	Escribir "Angulo ", angulo, " grados"
+FinAlgoritmo
+
+Funcion act_2
+	Escribir "ingresa el modulo del numero complejo"
+	Leer modulo
+	Escribir "Ingrese el angulo"
+	Leer angulo
+	radianes = angulo*PI/180
+	preal = modulo*Cos(radianes)
+	Pimag = modulo*Sen(radianes)
+	Escribir "La forma cartesiana es"
+	Escribir "parte real ", preal
+	Escribir "parte imaginaria ", pimag
+FinFuncion

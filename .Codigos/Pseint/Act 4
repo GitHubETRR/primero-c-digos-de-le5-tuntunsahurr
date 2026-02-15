@@ -1,0 +1,41 @@
+Algoritmo act_4
+	Escribir 'Ingresa la parte real del primer numero complejo'
+	Leer r1
+	Escribir 'Ingresa la parte imaginaria del numero complejo'
+	Leer i1
+	Escribir 'Ingresa el segundo numero real'
+	Leer r2
+	Escribir 'Ingresa el segundo numero imaginario'
+	Leer i2
+	preal <- r1-r2
+	pimag <- i1-i2
+	Escribir '¿Queres ver el resultado en forma cartesiana o polar? (1 o 2)'
+	Leer opcion
+	Si opcion=1 Entonces
+		Escribir 'Resultado en forma cartesiana'
+		Escribir 'Parte real es: ', preal
+		Escribir 'Parte imaginaria es: ', pimag
+	SiNo
+		modulo <- raiz(preal^2+pimag^2)
+		Si preal>0 Entonces
+			angulo <- ATan(pimag/preal)*180/PI
+			Si angulo<0 Entonces
+				angulo <- angulo+360
+			FinSi
+		SiNo
+			Si preal<0 Entonces
+				angulo <- ATan(pimag/preal)*180/PI+180
+			SiNo
+				Si preal=0 Entonces
+					Si pimag>0 Entonces
+						angulo <- 90
+					SiNo
+						angulo <- 270
+					FinSi
+				FinSi
+			FinSi
+		FinSi
+		Escribir 'Modulo ', modulo
+		Escribir 'Angulo ', angulo, ' grados'
+	FinSi
+FinAlgoritmo

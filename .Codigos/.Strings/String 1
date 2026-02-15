@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+#define MAX 200
+
+int Dimension(char cadena[]) {
+    int largo = 0;
+    while (cadena[largo] != '\0' && cadena[largo] != '\n') {
+        largo++;
+    }
+    return largo;
+}
+
+int main() {
+    char texto[MAX];
+    int largo;
+
+    printf("Hola escribi cualquier frase y te dire cuantos caracteres tiene\n");
+    fgets(texto, MAX, stdin);
+
+    largo = Dimension(texto);
+
+    printf("Bueno, escribiste: %s\n", texto);
+    printf("Y la cantidad de caracteres es: %d\n", largo);
+
+    return 0;
+}
+

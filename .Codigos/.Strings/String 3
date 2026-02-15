@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#define MAX
+
+void pasaMinuscula(char texto[]);
+int ContadorVocales(char texto[]);
+
+int main() {
+    char texto[MAX];
+
+    printf("Ingrese un texto: ");
+    fgets(texto, MAX, stdin);
+
+    int largo = strlen(texto);
+    if (largo > 0 && texto[largo - 1] == '\n') {
+        texto[largo - 1] = '\0';
+    }
+
+    pasaMinuscula(texto);
+
+    printf("Texto en minuscula: %s\n", texto);
+
+    int cant = ContadorVocales(texto);
+
+    printf("Tu texto tiene %d vocales\n", cant);
+
+    return 0;
+}
+
+void pasaMinuscula(char texto[]) {
+    int i = 0;
+    while (texto[i] != '\0') {
+        texto[i] = tolower(texto[i]);
+        i++;
+    }
+}
+
+int ContadorVocales(char texto[]) {
+    int contador = 0;
+
+    for (int i = 0; texto[i] != '\0'; i++) {
+        if (texto[i] == 'a' || texto[i] == 'e' || texto[i] == 'i' ||
+            texto[i] == 'o' || texto[i] == 'u') {
+            contador++;
+        }
+    }
+
+    return contador;
+}

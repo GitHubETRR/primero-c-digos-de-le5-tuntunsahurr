@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int main()
+{
+    int anio_actual, anio_nacimiento, mes_nacimiento, mes_actual, dia_nacimiento;
+    int dia_actual, edad; 
+
+    do {
+        printf("Ingresá el año actual: ");
+        scanf("%d", &anio_actual);
+    } while(anio_actual <= 0);
+
+    do {
+        printf("Ingresá el mes actual (1-12): ");
+        scanf("%d", &mes_actual);
+    } while(mes_actual < 1 || mes_actual > 12);
+    
+     do {
+        printf("Ingresá el dia actual (1-31) ");
+        scanf("%d", &dia_actual);
+    } while(dia_actual < 1 || dia_actual > 31);
+
+    do {
+        printf("Ingresá tu año de nacimiento: ");
+        scanf("%d", &anio_nacimiento);
+    } while(anio_nacimiento <= 0 || anio_nacimiento > anio_actual);
+
+    do {
+        printf("Ingresá tu mes de nacimiento (1-12): ");
+        scanf("%d", &mes_nacimiento);
+    } while(mes_nacimiento < 1 || mes_nacimiento > 12);
+    
+     do {
+        printf("Ingresá tu dia de nacimiento (1-31): ");
+        scanf("%d", &dia_nacimiento);
+    } while(dia_nacimiento < 1 || dia_nacimiento > 31);
+
+    edad = anio_actual - anio_nacimiento;
+    if(mes_actual < mes_nacimiento & dia_actual > dia_nacimiento) {
+        edad--;
+    }
+
+    printf("La edad que tenes es: %d años\n", edad);
+
+    return 0;
+}
